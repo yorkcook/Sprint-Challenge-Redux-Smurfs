@@ -1,8 +1,9 @@
-import { FETCHING, SUCCESS, FAILURE } from "../actions/index";
+import { FETCHING, SUCCESS, FAILURE, ADDING } from "../actions/index";
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
+  addSmurf: false,
   error: ""
 };
 
@@ -25,6 +26,13 @@ const smurfReducer = (state = initialState, action) => {
         ...state,
         error: "We have been SMURFED!",
         fetchingSmurfs: false
+      };
+
+    case ADDING:
+      return {
+        ...state,
+        addSmurf: true,
+        smurfs: action.payload
       };
 
     default:

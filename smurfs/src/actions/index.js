@@ -3,6 +3,8 @@ import axios from "axios";
 export const FETCHING = "FETCHING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
+export const CREATING = "CREATING";
+export const ADDING = "ADDING";
 
 /* 
   Action Types Go Here!
@@ -20,11 +22,11 @@ export const getSmurfs = () => dispatch => {
 };
 
 export const addSmurf = smurf => dispatch => {
-  dispatch({ type: FETCHING });
+  dispatch({ type: CREATING });
   axios
     .post("http://localhost:3333/smurfs", smurf)
     .then(res => {
-      dispatch({ type: SUCCESS, payload: res.data });
+      dispatch({ type: ADDING, payload: res.data });
     })
     .catch(err => dispatch({ type: FAILURE }));
 };
